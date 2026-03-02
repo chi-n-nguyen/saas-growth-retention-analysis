@@ -3,7 +3,7 @@
 A multi-table subscription analytics project analysing 500 accounts, 5,000 subscription records, and 600 churn events from the RavenStack synthetic SaaS dataset.
 
 **Tools:** Python (pandas, matplotlib, seaborn) · Excel (openpyxl) · Jupyter Notebooks
-**Dataset:** [RavenStack by River @ Rivalytics](https://rivalytics.medium.com) (MIT-like licence — fully synthetic, no PII)
+**Dataset:** [SaaS Subscription & Churn Analytics Dataset](https://www.kaggle.com/datasets/rivalytics/saas-subscription-and-churn-analytics-dataset) 
 
 ---
 
@@ -34,7 +34,7 @@ ravenstack-saas-analysis/
 
 ## Analyses
 
-### 1 · Cohort Retention (`01_cohort_retention.ipynb`)
+### 1. Cohort Retention (`01_cohort_retention.ipynb`)
 
 Joined `accounts.csv` + `subscriptions.csv` on `account_id`. Grouped accounts by signup month (cohort) and tracked what percentage remained active at Month 1, 3, 6, and 12 checkpoints.
 
@@ -46,7 +46,7 @@ Joined `accounts.csv` + `subscriptions.csv` on `account_id`. Grouped accounts by
 
 ---
 
-### 2 · MRR Bridge (`02_mrr_bridge.ipynb`)
+### 2. MRR Bridge (`02_mrr_bridge.ipynb`)
 
 Decomposed month-over-month MRR movement from `subscriptions.csv` into:
 
@@ -61,7 +61,7 @@ Decomposed month-over-month MRR movement from `subscriptions.csv` into:
 
 ---
 
-### 3 · Unit Economics & Churn Drivers (`03_unit_economics.ipynb`)
+### 3. Unit Economics & Churn Drivers (`03_unit_economics.ipynb`)
 
 Calculated per-tier unit economics (Avg MRR, Avg Lifespan, LTV, Monthly Churn Rate, LTV:MRR Ratio) and cross-tabulated churn reason codes by plan tier from `churn_events.csv`.
 
@@ -100,8 +100,3 @@ Outputs are written to `outputs/`. All notebooks are self-contained and read fro
 
 ---
 
-## Data Attribution
-
-Dataset: **RavenStack** synthetic SaaS dataset by River @ Rivalytics.
-Licence: MIT-like (educational/portfolio use permitted with credit).
-[https://rivalytics.medium.com](https://rivalytics.medium.com)
