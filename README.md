@@ -38,11 +38,15 @@ ravenstack-saas-analysis/
 
 Joined `accounts.csv` + `subscriptions.csv` on `account_id`. Grouped accounts by signup month (cohort) and tracked what percentage remained active at Month 1, 3, 6, and 12 checkpoints.
 
-**Output:** Cohort heatmap (all cohorts × 4 time checkpoints) + retention curves by plan tier.
+**Output:** Cohort heatmap (all cohorts × 4 time checkpoints) + retention curves segmented by plan tier, industry, and referral source.
 
 ![Cohort Heatmap](outputs/cohort_heatmap.png)
 
 ![Retention by Tier](outputs/retention_by_tier.png)
+
+![Retention by Industry](outputs/retention_by_industry.png)
+
+![Retention by Referral Source](outputs/retention_by_referral.png)
 
 ---
 
