@@ -50,10 +50,11 @@ Joined `accounts.csv` + `subscriptions.csv` on `account_id`. Grouped accounts by
 
 Decomposed month-over-month MRR movement from `subscriptions.csv` into:
 
-- **New MRR** — paid subscriptions started this month (non-upgrade)
-- **Expansion MRR** — upgrade-flagged subscriptions started this month
-- **Churned MRR** — subscriptions ended with `churn_flag = True`
-- **Net New MRR** — New + Expansion − Churned
+- **New MRR** — brand-new paid subscriptions (no upgrade or downgrade flag)
+- **Expansion MRR** — upgrades that started this month (`upgrade_flag = True`)
+- **Contraction MRR** — MRR delta lost from downgrades (`prev_mrr − new_mrr` per downgrade pair)
+- **Churned MRR** — subscriptions that fully ended this month, excluding accounts that merely downgraded
+- **Net New MRR** — New + Expansion − Contraction − Churned
 
 **Output:** Stacked bar + Net MRR overlay + cumulative growth chart.
 
