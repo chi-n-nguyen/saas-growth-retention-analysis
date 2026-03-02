@@ -24,7 +24,10 @@ ravenstack-saas-analysis/
 ├── outputs/
 │   ├── cohort_heatmap.png
 │   ├── retention_by_tier.png
+│   ├── retention_by_industry.png
+│   ├── retention_by_referral.png
 │   ├── mrr_bridge.png
+│   ├── nrr_trend.png
 │   ├── unit_economics_charts.png
 │   └── unit_economics_table.xlsx
 └── README.md
@@ -66,11 +69,15 @@ Decomposed month-over-month MRR movement from `subscriptions.csv` into:
 
 ---
 
-### 3. Unit Economics & Churn Drivers (`03_unit_economics.ipynb`)
+### 3. Unit Economics, NRR & Churn Drivers (`03_unit_economics.ipynb`)
 
-Calculated per-tier unit economics (Avg MRR, Avg Lifespan, LTV, Monthly Churn Rate, LTV:MRR Ratio) and cross-tabulated churn reason codes by plan tier from `churn_events.csv`.
+Calculated per-tier unit economics (Avg MRR, Avg Lifespan, LTV, Monthly Churn Rate, LTV:MRR Ratio, NRR) from `subscriptions.csv` and cross-tabulated churn reason codes by plan tier from `churn_events.csv`.
 
-**Output:** Formatted Excel workbook (3 sheets: Unit Economics · Churn Drivers · Strategic Recommendations) + charts.
+**NRR methodology:** Trailing 12M NRR — take all accounts with active MRR on 1 Jan 2024, measure their combined MRR 12 months later (churned accounts contribute $0). NRR > 100% means existing customers are net expanding in revenue.
+
+**Output:** NRR trend chart (monthly + by tier) + unit economics charts + formatted Excel workbook (3 sheets: Unit Economics · Churn Drivers · Strategic Recommendations).
+
+![NRR Trend](outputs/nrr_trend.png)
 
 ![Unit Economics](outputs/unit_economics_charts.png)
 
@@ -83,6 +90,8 @@ Calculated per-tier unit economics (Avg MRR, Avg Lifespan, LTV, Monthly Churn Ra
 - **Enterprise LTV ($15,775) is 8.9× Basic LTV ($1,765).** The tier differential is driven by MRR rather than lifespan — Enterprise accounts pay $5,787/month vs $560/month for Basic, with comparable average subscription lengths across tiers. This confirms a strong upsell ROI: converting one Basic account to Enterprise replaces the LTV of ~9 Basic accounts.
 
 - **Support issues drive Basic and Pro churn (21% and 19% respectively); Enterprise churns primarily on missing features (20%).** This points to two separate retention strategies: self-serve support improvements for lower tiers, and roadmap communication / feature delivery prioritisation for Enterprise accounts.
+
+- **NRR exceeds 100% across all tiers (Basic 248%, Pro 299%, Enterprise 330%).** All cohorts are net-expanding — existing customers are adding more subscriptions than they churn, with Enterprise accounts growing revenue the fastest. Monthly trailing 12M NRR declined from ~590% (Feb 2024) to ~290% (Jan 2025) as the customer base matured and the expansion rate normalised relative to a larger base.
 
 ---
 
