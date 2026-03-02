@@ -95,6 +95,16 @@ Calculated per-tier unit economics (Avg MRR, Avg Lifespan, LTV, Monthly Churn Ra
 
 ---
 
+## Strategic Recommendations
+
+- **Build Month-6 churn-risk alerts before any other retention initiative.** The 6→12 month window is where retention drops hardest (−12.5pp — steeper than the entire first 6 months combined). Flag accounts approaching 5-month tenure that show below-median feature usage for proactive CSM outreach. Referral-source data adds a targeting layer: ads-acquired accounts retain at 83.3% vs organic at 74.4% at Month 12, so organic cohorts should be prioritised in early intervention programs.
+
+- **Treat Enterprise NRR as the primary growth lever, not new logo acquisition.** Enterprise NRR is 330% — existing Enterprise accounts are already tripling revenue without new logos. With an 8.9× LTV differential over Basic and the fastest-expanding NRR tier, resources spent deepening Enterprise relationships return more than equivalent spend on Basic acquisition (where ~11% monthly churn rapidly offsets CAC). The priority upsell path is Basic → Enterprise, not Basic → Pro → Enterprise.
+
+- **Run separate retention playbooks per tier — and weight CSM time toward FinTech.** Basic and Pro churn is a support problem (21% and 19% of events respectively): fix ticket SLAs, invest in self-serve docs, and deploy 30/60/90-day onboarding check-ins. Enterprise churn is a roadmap problem (20%): public feature delivery timelines and quarterly business reviews reduce "missing features" as a churn driver. Across all tiers, FinTech accounts retain at 90.9% at Month 12 vs DevTools at 66.7% — a 24.2pp gap — making them the highest-value segment for renewal effort and upsell targeting.
+
+---
+
 ## How to Run
 
 ```bash
