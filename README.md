@@ -5,6 +5,7 @@ Subscription analytics project covering 500 accounts, 5,000 records, and 600 chu
 **Tools:** Python (pandas, matplotlib, seaborn) · Excel (openpyxl) · Jupyter Notebooks
 
 **Dataset:** [SaaS Subscription & Churn Analytics Dataset](https://www.kaggle.com/datasets/rivalytics/saas-subscription-and-churn-analytics-dataset)
+
 **Full analysis:** [REPORT.md](REPORT.md)
 
 ---
@@ -68,4 +69,5 @@ jupyter notebook
 Outputs are written to `outputs/`. All notebooks are self-contained and read from `data/`.
 
 ---
+
 
