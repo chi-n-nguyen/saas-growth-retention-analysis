@@ -1,6 +1,9 @@
 # Claude settings
 .claude/
 
+# Generated database
+*.db
+
 # Jupyter
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/

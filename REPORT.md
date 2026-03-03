@@ -37,7 +37,23 @@ RavenStack generated $10.16M in net MRR over 24 months, with every month net-pos
 
 ---
 
-## 3. Cohort Retention Analysis
+## 3. SQL Layer
+
+All core aggregations are first run as SQL queries against a local SQLite database before results are pulled into pandas for visualisation. See `notebooks/00_sql_queries.ipynb`.
+
+**Stack:** CSVs loaded via `pandas.to_sql()` into SQLite; queries executed with `pd.read_sql_query()`.
+
+| Query | SQL techniques |
+|---|---|
+| Monthly MRR by tier | `SUM(CASE WHEN ...)`, `strftime` date functions, `GROUP BY` |
+| Churn drivers by tier | Window function: `COUNT(*) / SUM(COUNT(*)) OVER (PARTITION BY plan_tier)` |
+| Unit economics | `AVG(JULIANDAY(end_date) - JULIANDAY(start_date))` date arithmetic |
+| Cohort active rate | CTE (`WITH latest_status AS ...`), `LEFT JOIN`, conditional aggregation |
+| Industry retention | Multi-table `LEFT JOIN`, `COUNT(DISTINCT ...)` |
+
+---
+
+## 4. Cohort Retention Analysis
 
 ### Methodology
 
@@ -97,7 +113,7 @@ Ads-acquired accounts retain 8.9pp higher than organic at Month 12. Counterintui
 
 ---
 
-## 4. MRR Bridge Analysis
+## 5. MRR Bridge Analysis
 
 ### Methodology
 
@@ -127,7 +143,7 @@ Contraction MRR ($22,700) represents 2% of Churned MRR ($1,179,139). Revenue los
 
 ---
 
-## 5. Unit Economics & NRR
+## 6. Unit Economics & NRR
 
 ### LTV by Plan Tier
 
@@ -162,7 +178,7 @@ Monthly trailing 12M NRR fell from 588.7% (Feb 2024) to 290.4% (Jan 2025) as the
 
 ---
 
-## 6. Churn Driver Analysis
+## 7. Churn Driver Analysis
 
 ### Cross-Tab: Reason Code by Plan Tier (% of tier churns)
 
@@ -187,7 +203,7 @@ Support is the dominant churn driver for both self-serve tiers. Enterprise churn
 
 ---
 
-## 7. Strategic Recommendations
+## 8. Strategic Recommendations
 
 ### Priority 1: Build Month-6 churn-risk alerts
 
@@ -215,7 +231,7 @@ Enterprise NRR is 329.5%. Existing Enterprise accounts triple revenue in 12 mont
 
 ---
 
-## 8. Methodology Notes
+## 9. Methodology Notes
 
 - **Right-censored lifespans:** Avg Lifespan in the unit economics table is computed from churned subscriptions only. Active subscriptions have unknown end dates and are excluded. Reported values understate true average lifespan for all tiers.
 - **NRR cohort definition:** The Jan 2024 cohort includes all accounts with at least one active, paid (non-trial) subscription on 1 Jan 2024. The monthly NRR trend applies the same definition to each start month.

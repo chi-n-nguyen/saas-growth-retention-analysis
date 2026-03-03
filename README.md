@@ -1,8 +1,8 @@
 # RavenStack SaaS Growth & Retention Analysis
 
-Subscription analytics project covering 500 accounts, 5,000 records, and 600 churn events across 24 months. Three notebooks: cohort retention, MRR bridge, and unit economics with NRR.
+Subscription analytics project covering 500 accounts, 5,000 records, and 600 churn events across 24 months. Four notebooks: SQL extraction layer, cohort retention, MRR bridge, and unit economics with NRR.
 
-**Tools:** Python (pandas, matplotlib, seaborn) · Excel (openpyxl) · Jupyter Notebooks
+**Tools:** Python (pandas, matplotlib, seaborn) · SQL (SQLite) · Excel (openpyxl) · Jupyter Notebooks
 
 **Dataset:** [SaaS Subscription & Churn Analytics Dataset](https://www.kaggle.com/datasets/rivalytics/saas-subscription-and-churn-analytics-dataset)
 
@@ -33,6 +33,7 @@ ravenstack-saas-analysis/
 │   ├── subscriptions.csv
 │   └── churn_events.csv
 ├── notebooks/
+│   ├── 00_sql_queries.ipynb
 │   ├── 01_cohort_retention.ipynb
 │   ├── 02_mrr_bridge.ipynb
 │   └── 03_unit_economics.ipynb
@@ -51,6 +52,14 @@ ravenstack-saas-analysis/
 
 ---
 
+## SQL Layer
+
+Raw CSVs are loaded into a local SQLite database. Core aggregations run as SQL queries before results are pulled into pandas. See [`00_sql_queries.ipynb`](notebooks/00_sql_queries.ipynb).
+
+SQL features demonstrated: `CASE WHEN` aggregation, window functions (`PARTITION BY`), CTEs (`WITH`), `JULIANDAY` date arithmetic, multi-table `JOIN`.
+
+---
+
 ## How to Run
 
 ```bash
@@ -58,6 +67,7 @@ ravenstack-saas-analysis/
 pip install pandas numpy matplotlib seaborn openpyxl jupyter python-dateutil
 
 # 2. Run notebooks (from project root)
+jupyter nbconvert --to notebook --execute --output-dir=notebooks notebooks/00_sql_queries.ipynb
 jupyter nbconvert --to notebook --execute --output-dir=notebooks notebooks/01_cohort_retention.ipynb
 jupyter nbconvert --to notebook --execute --output-dir=notebooks notebooks/02_mrr_bridge.ipynb
 jupyter nbconvert --to notebook --execute --output-dir=notebooks notebooks/03_unit_economics.ipynb
